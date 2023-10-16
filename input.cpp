@@ -36,10 +36,13 @@ int main(int argc, char** argv){
 
     for (int i = 0; i < ArgumentsSize; i++){
         HashNode aux = hv.getNode(keys[i]);
-        cout 
-        << (aux.getValor() == 0 ? "" : "Objeto encontrado!")
-        << endl;
-        aux.info();
+        if(aux.getValor() != 0){
+            cout << "Nó encontrado!" << endl;
+            aux.info();
+        }else{
+            continue;
+        }
+        cout << endl;
     }
 
 
