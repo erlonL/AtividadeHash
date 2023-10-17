@@ -46,7 +46,7 @@ Tabela 9
 ```
 
 ```bash
-User:~/Downloads/AtividadeHash-main$ ./input.exe "Ana" "Maria", "Pedrinho",...
+User:~/Downloads/AtividadeHash-main$ ./input.exe "Ana" "Maria" "Pedrinho"...
 Nó encontrado!
 Chave: Ana
 Valor: 10
