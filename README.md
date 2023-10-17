@@ -26,6 +26,38 @@ g++ input.o hash.o -o input.exe
 
 ## Execução
 *./*
+
+```bash
+User:~/Downloads/AtividadeHash-main$ ./main.exe
+Seja bem vindo ao Sistema de Hash!
+OBS.: O número de Tabelas Pai é 10!
+
+Escolha uma das opções abaixo: 
+1 - Criar nova tabela
+2 - Ler de um arquivo
+<opção> 1
+Digite o número de nós: ▮
+TABELA DE OPÇÕES
+1 - Inserir um nó
+2 - Buscar um nó
+3 - Remover um nó
+4 - Imprimir a tabela
+5 - Salvar em um arquivo
+6 - Sair
+Digite a opção desejada:
+▮
+
+<opção> 2
+Aqui estão os arquivos .txt encontrados na pasta:
+(1) - 'hashDB.txt'
+(2) - 'hashTest.txt'
+...
+Digite o número do arquivo que deseja abrir: ▮
+<TABELA DE OPÇÕES>
+Digite a opção desejada:
+▮
+```
+
 ```bash
 User:~/Downloads/AtividadeHash-main$ ./teste.exe
 
