@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
+#include <tuple>
+#include <fstream>
 
-using std::string;
+using std::string, std::tuple, std::fstream;
 
 class HashNode{
     string chave;
@@ -23,11 +25,17 @@ class HashTable{
 public:
     HashTable(int n = 10);
     int hash(string c);
+    bool notEmpty();
+    int getSize();
     void insert(string c, int v);
     void insert(HashNode* N);
+    bool remove(string c);
     void print();
     void log();
     HashNode getNode(string c);
+    int getHash(string c);
+    void write(FILE* file, int parentPos);
+    // void read(fstream file);
     ~HashTable();
 };
 
@@ -40,8 +48,12 @@ public:
     int hash(string c);
     void insert(string c, int v);
     void insert(HashNode* N);
+    bool remove(string c);
     void print();
     void log();
     HashNode getNode(string c);
+    tuple<int, int> getHash(string c);
+    void write(FILE* file);
+    // void read(fstream file);
     ~HashTableVector();
 };
