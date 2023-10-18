@@ -146,10 +146,11 @@ int main(void){
                 string chave;
                 cout << "Digite a chave: ";
                 cin >> chave;
-                HashNode aux = hv->getNode(chave);
-                if(aux.getValor() != 0){
+                HashNode* aux = new HashNode();
+                aux = hv->getNode(chave);
+                if(aux != nullptr){
                     cout << "Nó encontrado!" << endl;
-                    aux.info();
+                    aux->info();
                     cout << endl;
                 }else{
                     cout << "Nó não encontrado!" << endl;

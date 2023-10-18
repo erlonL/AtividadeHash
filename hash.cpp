@@ -13,6 +13,7 @@ HashNode::HashNode(string c, int v){
     valor = v;
     prox = nullptr;
 }
+HashNode::HashNode(){}
 string HashNode::getChave(){
     return chave;
 }
@@ -132,20 +133,20 @@ void HashTable::log(){
         cout << "NULL" << endl;
     }
 }
-HashNode HashTable::getNode(string c){
+HashNode* HashTable::getNode(string c){
     int pos = hash(c);
     HashNode* aux = childTable[pos];
     while(aux != nullptr){
         if(aux->getChave() == c){
-            return *aux;
+            return aux;
         }
         aux = aux->getProx();
     }
     if(aux == nullptr){
         cout << "Nó com chave '" << c << "' não encontrado!" << endl;
-        return HashNode("", 0);
+        return nullptr;
     }
-    return *aux;
+    return aux;
 }
 int HashTable::getHash(string c){
     return hash(c);
@@ -213,7 +214,7 @@ void HashTableVector::log(){
         parentTable[i]->log();
     }
 }
-HashNode HashTableVector::getNode(string c){
+HashNode* HashTableVector::getNode(string c){
     /*Retorna um nó a partir de uma string*/
     int pos = hash(c);
     return parentTable[pos]->getNode(c);

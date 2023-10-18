@@ -11,6 +11,7 @@ class HashNode{
     HashNode* prox;
 public:
     HashNode(string c, int v);
+    HashNode();
     string getChave();
     int getValor();
     HashNode* getProx();
@@ -32,7 +33,7 @@ public:
     bool remove(string c);
     void print();
     void log();
-    HashNode getNode(string c);
+    HashNode* getNode(string c);
     int getHash(string c);
     void write(FILE* file, int parentPos);
     ~HashTable();
@@ -50,7 +51,7 @@ public:
     bool remove(string c);
     void print();
     void log();
-    HashNode getNode(string c);
+    HashNode* getNode(string c);
     tuple<int, int> getHash(string c);
     void write(FILE* file);
     void read(fstream& file);

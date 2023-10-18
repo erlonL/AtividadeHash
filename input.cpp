@@ -1,7 +1,9 @@
 #include "hash.hpp"
 #include <iostream>
+#include <filesystem>
+#include <fstream>
 
-using std::string, std::cerr, std::cout, std::endl;
+using std::string, std::cerr, std::cout, std::endl, std::getline;
 
 int main(int argc, char** argv){
     if(argc == 1){
@@ -14,38 +16,44 @@ int main(int argc, char** argv){
         keys[i - 1] = argv[i];
     }
 
-    HashNode a1("Maria", 12);
-    HashNode a2("João", 6);
-    HashNode a3("José", 24);
-    HashNode a4("Lucas", 36);
-    HashNode a5("Matheus", 3);
-    HashNode a6("Simão", 7);
-    HashNode* a7 = new HashNode("Pedro", 9);
+    fstream file("hashDB.txt");
+    if(!file.is_open()){
+        cout << "Não foi possível abrir o arquivo!" << endl;
+        exit(1);
+    }
 
-    HashTableVector hv(50);
+    // utiliza o cabeçalho para alocar memória
+    string linha;
 
-    hv.insert(&a1);
-    hv.insert(&a2);
-    hv.insert(&a3);
-    hv.insert(&a4);
-    hv.insert(&a5);
-    hv.insert(&a6);
-    hv.insert(a7);
-    hv.insert("Ana", 10);
-    hv.insert("Mathuis", 35);
+    getline(file, linha);
+    std::stringstream ss(linha);
+    string c1, c2, c3;
+    getline(ss, c1, ' ');
+    getline(ss, c2, ' ');
+    getline(ss, c3, ' ');
+    // cout << c1 << " " << c2 << " " << c3 << endl;
+    c1.clear(); c2.clear();
 
+    int n = stoi(c3);
+    c3.clear();
+
+    HashTableVector* hv = new HashTableVector(n);
+
+    hv->read(file);
+
+    HashNode* aux = new HashNode();
     for (int i = 0; i < ArgumentsSize; i++){
-        HashNode aux = hv.getNode(keys[i]);
-        if(aux.getValor() != 0){
+        aux = hv->getNode(keys[i]);
+        if(aux != nullptr){
             cout << "Nó encontrado!" << endl;
-            aux.info();
+            aux->info();
         }else{
             continue;
         }
         cout << endl;
     }
 
-
-    delete a7;
+    file.close();
+    delete hv;
     return 0;
 }
