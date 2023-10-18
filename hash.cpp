@@ -183,7 +183,7 @@ int HashTableVector::hash(string c){
     for(int i = 0; i < c.size(); i++){
         soma += c[i];
     }
-    return soma*13 % tamanho;
+    return (soma*13) % tamanho;
 }
 void HashTableVector::insert(string c, int v){
     int pos = hash(c);
@@ -239,12 +239,13 @@ void HashTableVector::write(FILE* file){
         }
     }
 }
-/* // Por algum motivo ele não aceitou o ifstream como parâmetro
-void HashTableVector::read(ifstream file){
+ // Por algum motivo ele não aceitou o ifstream como parâmetro
+void HashTableVector::read(fstream& file){
     // Lê de um arquivo existente
     // da forma
     // parentPos childPos filaPos Chave Valor
     string linha;
+
     while(getline(file, linha)){
         stringstream ss(linha);
         string c1, c2, c3, c4, c5;
@@ -263,9 +264,7 @@ void HashTableVector::read(ifstream file){
         HashNode* novoNo = new HashNode(Chave, Valor);
         parentTable[parentPos]->insert(novoNo);
     }
-
 }
-*/
 HashTableVector::~HashTableVector(){
     for(int i = 0; i < tamanho; i++){
         delete parentTable[i];

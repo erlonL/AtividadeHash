@@ -35,7 +35,6 @@ public:
     HashNode getNode(string c);
     int getHash(string c);
     void write(FILE* file, int parentPos);
-    // void read(fstream file);
     ~HashTable();
 };
 
@@ -54,6 +53,6 @@ public:
     HashNode getNode(string c);
     tuple<int, int> getHash(string c);
     void write(FILE* file);
-    // void read(fstream file);
+    void read(fstream& file);
     ~HashTableVector();
 };
