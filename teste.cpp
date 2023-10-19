@@ -30,8 +30,9 @@ int main(void){
 
     hv->read(file);
 
-    hv->log();
+    // hv->log();
 
+    hv->print();
     file.close();
     delete hv;
     return 0;

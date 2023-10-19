@@ -53,6 +53,7 @@ public:
     void log();
     HashNode* getNode(string c);
     tuple<int, int> getHash(string c);
+    HashTable* getTable(int i);
     void write(FILE* file);
     void read(fstream& file);
     ~HashTableVector();

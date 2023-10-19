@@ -76,6 +76,7 @@ void HashTable::insert(string c, int v){
 }
 void HashTable::insert(HashNode* N){
     int pos = hash(N->getChave());
+    // cout << "childPos = " << pos << endl;
     if(childTable[pos] == nullptr){
         childTable[pos] = N;
     }else{
@@ -184,15 +185,17 @@ int HashTableVector::hash(string c){
     for(int i = 0; i < c.size(); i++){
         soma += c[i];
     }
-    return (soma*13) % tamanho;
+    return (soma*8657) % tamanho;
 }
 void HashTableVector::insert(string c, int v){
     int pos = hash(c);
+    // cout << "parentPos = " << pos << endl;
     HashNode* novoNo = new HashNode(c, v);
     parentTable[pos]->insert(novoNo);
 }
 void HashTableVector::insert(HashNode* N){
     int pos = hash(N->getChave());
+    cout << "parentPos = " << pos << endl;
     parentTable[pos]->insert(N);
 }
 bool HashTableVector::remove(string c){
@@ -224,6 +227,9 @@ tuple<int, int> HashTableVector::getHash(string c){
     int ParentPos = hash(c);
     int ChildPos = parentTable[ParentPos]->getHash(c);
     return {ParentPos, ChildPos};
+}
+HashTable* HashTableVector::getTable(int i){
+    return parentTable[i];
 }
 void HashTableVector::write(FILE* file){
     /*Escreve em um arquivo existente
